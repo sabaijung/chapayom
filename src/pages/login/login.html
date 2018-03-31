@@ -1,0 +1,61 @@
+<ion-content >
+	<div class="overlay"></div>
+	<img class="logo" src="assets/logo/logo1.jpg">
+	  <ion-segment [(ngModel)]="login_type" color="light" padding class="switcher">
+        <ion-segment-button value="login" default>เข้าสู่ระบบ</ion-segment-button>
+        <ion-segment-button value="register">ลงทะเบียน</ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="login_type">
+	    <div *ngSwitchCase="'login'" >
+		    <form [formGroup]="login_form" (ngSubmit)="login(user)" padding>
+			    <ion-item class="input-item">
+			    	<ion-label>
+			    		<ion-icon name="md-at"></ion-icon> อีเมล์
+		    		</ion-label>
+			    	<ion-input formControlName="email" type="email" [(ngModel)]="user.email"></ion-input>
+			    </ion-item>
+			    <ion-item class="input-item">
+			    	<ion-label>
+			    		<ion-icon name="md-lock"></ion-icon> รหัสผ่าน
+			    	</ion-label>
+			    	<ion-input formControlName="password" type="password" [(ngModel)]="user.password"></ion-input>
+				</ion-item>
+			    <button class="login-button" ion-button icon-start type="submit" [disabled]="!login_form.valid">
+		      		<ion-icon name="log-in"></ion-icon>
+		      		<span>เข้าสู่ระบบ</span>
+	      		</button>
+	      		<p class="forgot-password" (tap)="forgotPassword()">
+		        	ลืมรหัสผ่าน
+		        </p>
+		    </form>
+	    </div>
+
+	   <!-- REGISTER -->
+	    <div *ngSwitchCase="'register'">
+	      <form [formGroup]="register_form" (ngSubmit)="register(user)" padding>
+			    <ion-item class="input-item">
+			    	<ion-label>
+			    		<ion-icon name="md-at"></ion-icon> อีเมล์
+		    		</ion-label>
+			    	<ion-input formControlName="email" type="email" [(ngModel)]="user.email"></ion-input>
+			    </ion-item>
+			    <div style="position:relative;">
+				    <ion-item class="input-item">
+				    	<ion-label>
+				    		<ion-icon name="md-lock"></ion-icon> รหัสผ่าน
+				    	</ion-label>
+				    	<ion-input formControlName="password" type="{{password_input_type}}" [(ngModel)]="user.password"></ion-input>
+				    </ion-item>
+				    <div style="position:absolute;right:10px;width:20px;top:12px;color:#aaa;font-size:20px;" (tap)="showHidePass()">
+			    		<ion-icon name="{{show_hide_icon}}"></ion-icon>
+		    		</div>
+			    </div>
+			    <button class="register-button" color="secondary" ion-button icon-start type="submit" [disabled]="!register_form.valid">
+		      		<ion-icon name="log-in"></ion-icon>
+		      		<span>ลงทะเบียน</span>
+		      </button>
+		    </form>
+	    </div>
+    </div>
+</ion-content>

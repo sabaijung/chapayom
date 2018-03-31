@@ -1,0 +1,54 @@
+<ion-header >
+  <ion-navbar color="secondary">
+    <ion-title>ChaPayom</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page" >
+  <div class="row">
+      <ion-slides pager>
+          <ion-slide>
+              <img src="assets/slide/c10.jpg"/>
+              <div class="card-title">ชาพะยอม</div>
+              <div class="card-subtitle">อร่อย แก้วไหนก็ราคาเดียว</div>
+          </ion-slide>
+          <ion-slide>
+              <img src="assets/slide/c11.png"/>
+          </ion-slide>
+        </ion-slides>
+  </div>
+  <div style="text-align:center;color:rgb(223, 154, 7)">
+   <h4>ร้านกาแฟ คาเฟ่ บรรยากาศดี ฟรี WIFI</h4> 
+  </div>
+  <hr>
+  <ion-list>
+    <ion-item *ngFor="let item of menuChas" >
+      <ion-avatar item-start>
+        <img src="{{item.img}}">
+      </ion-avatar>
+      <br>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+              <h4><span style="color:red;"><strong>{{item.menu_name}}</strong></span></h4>
+          </ion-col>
+          <ion-col col-6 >
+            <div style="text-align:right">
+                {{item.price}} <ion-icon name="logo-bitcoin"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div style="font-style:italic"> <p>
+          โปรโมชั่น: ซื้อ 10 แถมฟรี 1 แก้ว
+      </p>  </div>
+      <br>
+      <div style="text-align:right">
+        <button ion-button ion-button icon-left>
+            <ion-icon name="checkmark"></ion-icon>
+          ซื้อ</button>
+      </div>
+    </ion-item>
+    
+  </ion-list>
+</ion-content>
